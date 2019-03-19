@@ -1,0 +1,50 @@
+vue:
+安装：
+	npm install -g vue-cli
+	vue init webpack projectName  初始化项目
+	cd projectName
+	npm install  安装依赖
+	npm run dev
+
+目录结构：
+	index.html  项目根视图	
+	
+基本指令：
+	v-html: 渲染文本, 能解析 <p>ccccc</P>
+	v-text: 不能能解析 <p>ccccc</P>
+	b-bind: 绑定属性
+	
+条件渲染：
+	v-if="xxx"
+	v-else-if=""
+	v-show=""  # 基于css 进行变换
+	
+列表渲染：
+	<li v-for="(item, index) in lists" v-bind:key="index">{{ item}}</li>
+
+事件监听：
+	v-on:
+	与data同级增加methods: {}
+	事件参数
+	事件修饰符
+	数组检测更新
+
+计算属性与监听：
+    计算属性:
+        增加computed: {
+            functionName(){
+                return xxx
+            }
+        }
+    computed vs methods:
+        计算属性依赖于缓存 只要数据不变 只计算一次， methods会每次都计算
+
+表单绑定：
+    v-model: 双向数据绑定
+        <input type="text" v-model="msg">  
+        通过 watch: {} 监听数据改变 
+        修饰符：.lazy  .munber  
+            <input type="text" v-model.lazy="msg">  
+
+style 与 class:
+                            
