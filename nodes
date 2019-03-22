@@ -22,29 +22,46 @@ vue:
 列表渲染：
 	<li v-for="(item, index) in lists" v-bind:key="index">{{ item}}</li>
 
-事件监听：
+事件处理：
 	v-on:
-	与data同级增加methods: {}
-	事件参数
+	与data同级增加methods: {
+		函数名: function(参数){
+
+		}
+	}
 	事件修饰符
-	数组检测更新
+	按键修饰符：
+		v-on:keyup.enter="函数名"
 
 计算属性与监听：
     计算属性:
         增加computed: {
-            functionName(){
+            属性名: function(){
                 return xxx
             }
         }
     computed vs methods:
         计算属性依赖于缓存 只要数据不变 只计算一次， methods会每次都计算
+	侦听器：
+		watch: {
+			属性名: function(){
+				当需要在数据变化时执行异步或开销较大的操作时，这个方式是最有用的。
+			}
+		}
 
 表单绑定：
     v-model: 双向数据绑定
         <input type="text" v-model="msg">  
         通过 watch: {} 监听数据改变 
-        修饰符：.lazy  .munber  
+        修饰符：
+			.lazy 光标移开时触发绑定事件
+			.munber
+			.trim  过滤用户输入的首尾空白字符
             <input type="text" v-model.lazy="msg">  
 
 style 与 class:
+	<div v-bind:class="{active: isActive}">
+
+组件：
+		
                             
