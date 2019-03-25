@@ -63,5 +63,27 @@ style 与 class:
 	<div v-bind:class="{active: isActive}">
 
 组件：
-		
+	创建子组件：
+		1.新建组件
+		2.父组件中引入：import Children from './children'
+		3.父组件中注入：components: {Children}
+		4.父组件中渲染：<Children />
+	父组件传递到子组件：
+		父组件中传：<Children :属性名="要传递的数据/属性" />
+		子组件中收：props:{}
+	props验证：
+		类型验证
+		必选项验证
+		默认值
+	子组件传递到父组件：
+		1.子组件中：触发事件
+		2.事件中：this.$emit("send", this.addNum)
+		3.父组件中自定义事件
+
+	插槽：
+		单个插槽
+			1.创建父子组件
+			2.父：<Children><p>我是插槽</p></Children>  子：<slot></slot>
+		具名插槽
+		作用域插槽： 数据为子 --> 父				
                             
