@@ -2,7 +2,12 @@
     <div>
         父组件
         <Children>
-            <p>我是插槽</p>
+            <div slot="d1">
+                第一个插槽
+            </div>
+            <div slot="d2" slot-scope="props">
+                {{ props.text }}
+            </div>
         </Children>
     </div>
 </template>

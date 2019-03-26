@@ -1,7 +1,8 @@
 <template>
     <div>
         子组件
-        <slot></slot>
+        <slot name="d1"></slot>
+        <slot name="d2" :text="context"></slot>
     </div>
 </template>
 
@@ -10,7 +11,8 @@
 export default {
     name: 'Child',
     data(){
-        return {           
+        return {
+            context: "处理后的数据"           
         }
     },   
 }

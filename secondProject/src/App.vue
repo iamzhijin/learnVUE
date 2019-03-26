@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
-    <Parent/>
+    <Big/>
   </div>
 </template>
 
@@ -9,12 +9,16 @@
 import HelloWorld from './components/HelloWorld'
 // import Parent from './components/parent'
 import Parent from './components/slots/parent'
+import Big from './components/keepAlive/big'
+
+
 
 export default {
   name: 'App',
   components: {
     HelloWorld,
-    Parent
+    Parent,
+    Big,
   }
 }
 </script>
