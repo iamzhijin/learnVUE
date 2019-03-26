@@ -85,5 +85,81 @@ style 与 class:
 			1.创建父子组件
 			2.父：<Children><p>我是插槽</p></Children>  子：<slot></slot>
 		具名插槽
-		作用域插槽： 数据为子 --> 父				
+			1.父：<p slot="s1">test</p>
+			2.子： <slot name="s1"></slot>
+		作用域插槽： 数据为子 --> 父
+			1.场景：数据相同 展示形式不一样
+			2.子组件中定义数据： <slot name="d2" :text="context"></slot>
+			3.父组件中接收数据：<div slot="d2" slot-scope="props">{{ props.text }}</div>
+
+	动态组件：
+		component：(重新渲染视图)
+			父组件中：<component :is="currentView"></component>, currentView对应视图名
+		keep-alive: (从缓存中读取视图)
+			<keep-alive><component :is="currentView"></component></keep-alive>
+
+过度与动画：
+	pass
+
+自定义指令：
+	全局指令：
+		main.js中定义: Vue.directive('指令名', {钩子函数}})
+	局部指令：
+		directives: {'指令名': {钩子函数}}	
+
+过滤器：
+	{{ 内容 | 过滤规则名 }}
+	filters: { 过滤规则名: function(value){具体规则} }
+
+axios:
+	中文文档：https://www.kancloud.cn/yunye/axios/234845
+	vue 中引入(main.js)：
+		import Axios from 'axios' // 引入axios
+		Vue.prototype.$axios = Axios // axios挂载在Vue 对象
+	vue中axios跨域请求问题：
+		Vue.prototype.HOME = '/api'  // HOME 是一个定值 默认指向localhost 修为为 /api 并在index.js 中配置允许跨域
+		proxyTable: { // axios 跨域请求 处理
+		'/api': {
+			// target: 'https://api.douban.com',
+			target: 'http://10.1.1.114:7887',
+			changeOrigin: true, //允许跨域
+			pathRewrite: {
+			'^/api': '' // 理解为用 /api 代替target中的地址
+			}
+		}
+		},
+		*此方法仅使用于测试阶段
+	axios做post请求：
+		参数形式：
+			form-data: ?key=value&key=value
+			x-www-form-urlencode: {key: 'value', key: 'value'}
+			axios post请求只接受form-data形式
+				转换：qs.stringify({key: value})
+	axios全局设置：
+		axios.defaults.baseURL = '根路径配置'; // 配置了跨域问题时 不需要再配置此选项
+		axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
+		axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+
+	axios拦截器：
+		请求拦截：
+			axios.interceptors.request.use(function (config) {
+    			// 在发送请求之前做些什么
+    			return config;
+  			}, function (error) {
+    			// 对请求错误做些什么
+    			return Promise.reject(error);
+  			});
+		响应拦截：
+			axios.interceptors.response.use(function (response) {
+    			// 对响应数据做点什么
+   	 			return response;
+  			}, function (error) {
+    			// 对响应错误做点什么
+    			return Promise.reject(error);
+  			});	  	
+
+
+
+
+
                             
