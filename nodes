@@ -158,6 +158,10 @@ axios:
     			return Promise.reject(error);
   			});	  	
 
+路由：
+	跳转：
+		<router-link to="">xxx</rount-link>  to 可以有多种写法 :to=""
+
 
 
 
